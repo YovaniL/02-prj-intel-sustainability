@@ -1,1 +1,144 @@
-/* Add your CSS here */
+/*
+	Intel Sustainability Timeline Styles
+	Simple, beginner-friendly CSS with comments
+*/
+
+body {
+	font-family: Arial, sans-serif;
+	background: #f4f8fb;
+	color: #222;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background: #0068b5; /* Intel blue */
+	color: #fff;
+	padding: 2rem 1rem 1rem 1rem;
+	text-align: center;
+}
+
+header img {
+	width: 120px;
+	margin-bottom: 1rem;
+}
+
+header h1 {
+		margin: 0.5rem 0 0.2rem 0;
+		font-size: 2.8rem;
+		letter-spacing: 2px;
+		font-family: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
+		font-weight: bold;
+		text-shadow: 0 2px 8px rgba(0,104,181,0.10);
+}
+
+header p {
+	margin: 0.5rem 0 0 0;
+	font-size: 1.1rem;
+	color: #e0eefa;
+}
+
+section {
+	padding: 2rem 0.5rem 1rem 0.5rem;
+}
+
+/* Timeline container: horizontal scroll on large screens, vertical stack on small */
+.timeline {
+		display: flex;
+		gap: 1.5rem;
+		overflow-x: auto;
+		padding-bottom: 1rem;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Make each card snap to the start of the scroll area */
+	.card {
+		scroll-snap-align: start;
+}
+
+/* Each card in the timeline */
+.card {
+	background: #fff;
+	border-radius: 1rem;
+	box-shadow: 0 2px 8px rgba(0,104,181,0.08);
+	min-width: 260px;
+	max-width: 280px;
+	flex: 0 0 260px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: transform 0.2s, box-shadow 0.2s;
+	position: relative;
+	scroll-snap-align: start;
+}
+
+.card:hover {
+	transform: translateY(-8px) scale(1.03);
+	box-shadow: 0 8px 24px rgba(0,104,181,0.18);
+	z-index: 2;
+}
+
+/* Card image */
+.card-img {
+	width: 100%;
+	height: 120px;
+	object-fit: cover;
+	border-radius: 1rem 1rem 0 0;
+}
+
+.card-content {
+	padding: 1rem;
+	width: 100%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+.card h2 {
+	color: #0068b5;
+	margin: 0.2rem 0 0.1rem 0;
+	font-size: 1.3rem;
+}
+
+.card h3 {
+	margin: 0.1rem 0 0.5rem 0;
+	font-size: 1.1rem;
+	color: #0071c5;
+}
+
+/* Hide details by default, show on hover */
+.card-details {
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+.card:hover .card-details {
+	max-height: 200px;
+	opacity: 1;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 700px) {
+	.timeline {
+		flex-direction: column;
+		gap: 1.2rem;
+		overflow-x: visible;
+		padding-bottom: 0;
+	}
+	.card {
+		min-width: 0;
+		max-width: 100%;
+		width: 100%;
+		flex: 1 1 100%;
+	}
+}
+
+/* Aesthetic tweaks for the scroll/hint text */
+p {
+	text-align: center;
+	color: #0068b5;
+	font-size: 1rem;
+	margin-top: 1rem;
+}
